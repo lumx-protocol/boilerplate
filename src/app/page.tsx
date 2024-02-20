@@ -82,9 +82,7 @@ export default async function Home({
 	return (
 		<div className='min-h-screen flex flex-col justify-between'>
 			<Header />
-			{searchParams.id && searchParams.hash && (
-				<SuccessDialog imageUrl={item.imageUrl} />
-			)}
+			{searchParams.id && searchParams.hash && <SuccessDialog item={item} />}
 			<main className='pb-24 px-[calc(100%-85vw)]'>
 				<ItemInfo contract={contract} item={item} />
 			</main>

@@ -10,8 +10,9 @@ import {
 import { Button } from './ui/button';
 import { DialogHeader, DialogFooter } from './ui/dialog';
 import Image from 'next/image';
+import { Item } from '@/app/page';
 
-export const SuccessDialog = ({ imageUrl }: { imageUrl: string }) => {
+export const SuccessDialog = ({ item }: { item: Item }) => {
 	return (
 		<>
 			<Dialog open={true}>
@@ -21,9 +22,9 @@ export const SuccessDialog = ({ imageUrl }: { imageUrl: string }) => {
 
 				<DialogContent className='sm:max-w-[520px]'>
 					<div className='flex gap-4 items-center'>
-						{imageUrl ? (
+						{item.imageUrl ? (
 							<Image
-								src={imageUrl}
+								src={item.imageUrl}
 								alt={'image'}
 								className='flex-1'
 								width={600}
@@ -34,15 +35,14 @@ export const SuccessDialog = ({ imageUrl }: { imageUrl: string }) => {
 						)}
 						<article className='flex-1'>
 							<h4 className='text-sm leading-[14px] text-neutral-500 font-medium pb-1.5'>
-								Minting now
+								Congratulations
 							</h4>
 							<h1 className='font-semibold text-xl tracking-[-0.75%] pb-1.5'>
-								{'Item Name'}
+								{item.name || 'Item Name'}
 							</h1>
-							<h2 className='font-normal text-sm leading-[14px] text-neutral-500 pb-4'>
-								{'Contract Name'}
-							</h2>
-							<p className='break-words max-w-[600px]'>fato</p>
+							<p className='break-words max-w-[600px]'>
+								{item.description || 'item description'}
+							</p>
 						</article>
 					</div>
 					<DialogFooter className='flex-1'>

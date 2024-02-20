@@ -1,8 +1,9 @@
 'use client';
 
-import { Wallet, WalletContextProvider } from '@lumx-protocol/embedded-wallet';
+import { WalletContextProvider } from '@lumx-protocol/embedded-wallet';
 import { Button } from './ui/button';
 import Image from 'next/image';
+import { Profile } from './profile';
 
 export const Header = () => {
 	return (
@@ -11,12 +12,12 @@ export const Header = () => {
 			isModal
 			environment='sandbox'
 		>
-			<header className='flex gap-4 pt-12 px-[calc(100%-85vw)]'>
+			<header className='flex gap-4 pt-12 items-center px-[calc(100%-85vw)]'>
 				<Image src='./lumx-logo.svg' height={39} width={39} alt='lumx logo' />
 				<Button className='w-fit mr-auto' variant={'secondary'}>
 					Welcome
 				</Button>
-				<Wallet />
+				<Profile />
 			</header>
 		</WalletContextProvider>
 	);

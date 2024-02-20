@@ -28,13 +28,13 @@ export const ItemInfo = ({ item, contract }: ItemInfoProps) => {
 	return (
 		<div className='flex gap-10 items-center pt-16'>
 			{imageUrl ? (
-				<Image src={imageUrl} alt={name} width={232} height={232} />
+				<Image src={imageUrl} alt={name} width={600} height={600} />
 			) : (
-				<div className='h-[232px] flex-shrink-0 w-[232px] rounded-md bg-neutral-300' />
+				<div className='h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300' />
 			)}
 			<article>
 				<h4 className='text-sm leading-[14px] text-neutral-500 font-medium pb-1.5'>
-					Congratulations!
+					Minting now
 				</h4>
 				<h1 className='font-semibold text-3xl tracking-[-0.75%] pb-1.5'>
 					{name || 'Item Name'}
