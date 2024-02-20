@@ -6,7 +6,7 @@ import { UserNav } from './user-nav';
 import { Separator } from './ui/separator';
 
 export const Profile = () => {
-	const user = JSON.parse(localStorage.getItem('wallet.user')!);
+	const user = JSON.parse(localStorage.getItem('wallet.user')!) || {};
 	const getAbbreviatedWalletAddress = (address: string) => {
 		return `${address.slice(0, 4)}...${address.slice(-4)}`;
 	};

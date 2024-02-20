@@ -44,7 +44,7 @@ export type Contract = {
 export default async function Home({
 	searchParams,
 }: {
-	searchParams: { hash: string; id: string };
+	searchParams: { hash: string };
 }) {
 	const getItemType = async () => {
 		const responseForItemType = await fetch(
@@ -82,7 +82,7 @@ export default async function Home({
 	return (
 		<div className='min-h-screen flex flex-col justify-between'>
 			<Header />
-			{searchParams.id && searchParams.hash && <SuccessDialog item={item} />}
+			{searchParams.hash && <SuccessDialog item={item} />}
 			<main className='pb-24 px-[calc(100%-85vw)]'>
 				<ItemInfo contract={contract} item={item} />
 			</main>

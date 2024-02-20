@@ -6,14 +6,9 @@ import { mint } from '@/app/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useState, useTransition } from 'react';
 import { useServerAction } from '@/hooks/useServerAction';
+import { redirect } from 'next/navigation';
 
-const initialState = {
-	id: '',
-	itemTypeId: '',
-	amount: 0,
-	status: 'pre-submit',
-	transactionHash: null,
-};
+const transactionHash = '';
 
 const SubmitButtonForm = ({ isLoading }: { isLoading: boolean }) => {
 	const { pending, data } = useFormStatus();
@@ -21,26 +16,34 @@ const SubmitButtonForm = ({ isLoading }: { isLoading: boolean }) => {
 
 	return (
 		<Button type='submit' aria-disabled={pending}>
-			{isLoading ? 'minting...' : 'Mint'}
+			{pending ? 'minting...' : 'Mint'}
 		</Button>
 	);
 };
 
 export const ClaimForm = () => {
-	const [state, formAction] = useFormState(mint, initialState);
+	const mintWithWalletId = mint.bind(
+		null,
+		'fc779ee2-3a3b-4332-9900-71bde7545aee'
+	);
+	const [state, formAction] = useFormState(mintWithWalletId, transactionHash);
 
-	const [runAction, isRunning] = useServerAction(formAction, (hahah) => {
-		console.log('hahaha');
-	});
+	// const [runAction, isRunning] = useServerAction(formAction, (result) => {
+	// 	console.log(result, 'result');
+	// });
 
-	const onSubmit = async (formData: FormData) => {
-		// run some validarion here
-		var result = await runAction(formData);
-		// continue running some code after the action completed
-	};
+	useEffect(() => {
+		if (state.includes('0x')) {
+			redirect(`?hash=${state}`);
+		}
+	}, [state]);
+
+	// const onSubmit = async (formData: FormData) => {
+	// 	await runAction(formData);
+	// };
 
 	return (
-		<form action={onSubmit} className='flex gap-4 pt-4'>
+		<form action={formAction} className='flex gap-4 pt-4'>
 			<Input
 				id='quantity'
 				type='number'
@@ -48,7 +51,8 @@ export const ClaimForm = () => {
 				className='w-[111px] text-center'
 				required
 			/>
-			<SubmitButtonForm isLoading={isRunning} />
+			{JSON.stringify(state)}
+			<SubmitButtonForm isLoading />
 		</form>
 	);
 };
