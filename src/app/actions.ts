@@ -1,7 +1,5 @@
 'use server';
 
-import { redirect } from 'next/navigation';
-
 export const mint = async (
 	walletId: string,
 	prevState: any,
@@ -28,12 +26,8 @@ export const mint = async (
 
 	let dataFromTransaction;
 
-	// const interval =
-
-	// console.log(dataFromTransaction, 'dataFromTransaction after setinterval');
-
 	function interval() {
-		return new Promise(function (resolve, reject) {
+		return new Promise<string>(function (resolve, reject) {
 			const interval = setInterval(async () => {
 				console.log('interval started');
 				const responseFromTransaction = await fetch(
