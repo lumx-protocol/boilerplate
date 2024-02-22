@@ -13,20 +13,20 @@ export const SuccessDialog = ({ item }: { item: Item }) => {
 	return (
 		<>
 			<Dialog open={closeModal} onOpenChange={setCloseModal}>
-				<DialogContent className='sm:max-w-[520px]'>
-					<div className='flex gap-4 items-center'>
+				<DialogContent className='sm:max-w-[520px] w-screen h-screen sm:h-auto'>
+					<div className='flex sm:flex-row flex-col gap-4 sm:items-center pt-6 sm:pt-0'>
 						{item.imageUrl ? (
 							<Image
 								src={item.imageUrl}
 								alt={'image'}
-								className='flex-1 rounded-md'
-								width={236}
+								className='sm:flex-1 rounded-md'
+								width={600}
 								height={600}
 							/>
 						) : (
 							<div className='h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300' />
 						)}
-						<article className='flex-1'>
+						<article className='sm:flex-1'>
 							<h4 className='text-sm leading-[14px] text-neutral-500 font-medium pb-1.5'>
 								Congratulations
 							</h4>
@@ -38,13 +38,13 @@ export const SuccessDialog = ({ item }: { item: Item }) => {
 							</p>
 						</article>
 					</div>
-					<DialogFooter className='flex-1'>
-						<Button className='w-full'>Go to profile</Button>
+					<DialogFooter className='flex-1 gap-6'>
 						<DialogClose asChild>
 							<Button variant='outline' type='button'>
 								Fechar
 							</Button>
 						</DialogClose>
+						<Button className='w-full'>Ir para o perfil</Button>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>

@@ -12,7 +12,7 @@ export const Profile = () => {
 	};
 
 	return (
-		<div>
+		<div className='ml-auto sm:ml-0'>
 			{Object.keys(user).length > 0 ? (
 				<div className='flex h-10 items-center space-x-4 text-sm'>
 					<div>

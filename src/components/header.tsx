@@ -12,9 +12,9 @@ export const Header = () => {
 			isModal
 			environment='sandbox'
 		>
-			<header className='flex gap-4 pt-12 items-center px-[calc(100%-85vw)]'>
+			<header className='flex gap-4 pt-12 items-center sm:px-[calc(100%-85vw)] px-[calc(5vw)]'>
 				<Image src='./lumx-logo.svg' height={39} width={39} alt='lumx logo' />
-				<Button className='w-fit mr-auto' variant={'secondary'}>
+				<Button className='w-fit mr-auto hidden sm:block' variant={'secondary'}>
 					Welcome
 				</Button>
 				<Profile />

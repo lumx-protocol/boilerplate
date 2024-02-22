@@ -17,7 +17,7 @@ const SubmitButtonForm = () => {
 		<Button
 			type='submit'
 			aria-disabled={pending}
-			className='disabled:opacity-50'
+			className='disabled:opacity-50 sm:w-auto w-full'
 			disabled={pending}
 		>
 			{pending ? (
@@ -51,7 +51,7 @@ export const ClaimForm = () => {
 				id='quantity'
 				type='number'
 				name='quantity'
-				className='w-[111px] text-center'
+				className='sm:w-[111px] w-full text-center'
 				required
 			/>
 			<SubmitButtonForm />

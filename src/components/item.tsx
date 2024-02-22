@@ -24,7 +24,7 @@ export const ItemInfo = ({ item, contract }: ItemInfoProps) => {
 	};
 
 	return (
-		<div className='flex gap-10 items-center pt-16'>
+		<div className='flex gap-10 sm:items-center sm:pt-16 sm:flex-row flex-col'>
 			{imageUrl ? (
 				<Image
 					src={imageUrl}
