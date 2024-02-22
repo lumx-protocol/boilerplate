@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import { Separator } from './ui/separator';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { type Contract, type Item } from '@/app/page';
 import { Clock } from './ui/clock';
 import { ClaimForm } from './claim-form';
+import { Contract, Item } from '@/types';
 
 export interface ItemInfoProps {
 	item: Item;
@@ -28,7 +26,13 @@ export const ItemInfo = ({ item, contract }: ItemInfoProps) => {
 	return (
 		<div className='flex gap-10 items-center pt-16'>
 			{imageUrl ? (
-				<Image src={imageUrl} alt={name} width={600} height={600} />
+				<Image
+					src={imageUrl}
+					alt={name}
+					width={600}
+					height={600}
+					className='rounded-md'
+				/>
 			) : (
 				<div className='h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300' />
 			)}

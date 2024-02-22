@@ -1,33 +1,26 @@
 'use client';
 
-import {
-	Dialog,
-	DialogTrigger,
-	DialogContent,
-	DialogTitle,
-	DialogDescription,
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent } from '@/components/ui/dialog';
 import { Button } from './ui/button';
-import { DialogHeader, DialogFooter } from './ui/dialog';
+import { DialogFooter } from './ui/dialog';
 import Image from 'next/image';
-import { Item } from '@/app/page';
+import { Item } from '@/types';
+import { useState } from 'react';
 
 export const SuccessDialog = ({ item }: { item: Item }) => {
+	const [closeModal, setCloseModal] = useState(true);
+
 	return (
 		<>
-			<Dialog open={true}>
-				{/* <DialogTrigger asChild>
-					<Button variant='outline'>Edit Profile</Button>
-				</DialogTrigger> */}
-
+			<Dialog open={closeModal} onOpenChange={setCloseModal}>
 				<DialogContent className='sm:max-w-[520px]'>
 					<div className='flex gap-4 items-center'>
 						{item.imageUrl ? (
 							<Image
 								src={item.imageUrl}
 								alt={'image'}
-								className='flex-1'
-								width={600}
+								className='flex-1 rounded-md'
+								width={236}
 								height={600}
 							/>
 						) : (
@@ -40,16 +33,18 @@ export const SuccessDialog = ({ item }: { item: Item }) => {
 							<h1 className='font-semibold text-xl tracking-[-0.75%] pb-1.5'>
 								{item.name || 'Item Name'}
 							</h1>
-							<p className='break-words max-w-[600px]'>
+							<p className='break-words text-neutral-500 text-sm'>
 								{item.description || 'item description'}
 							</p>
 						</article>
 					</div>
 					<DialogFooter className='flex-1'>
 						<Button className='w-full'>Go to profile</Button>
-						<Button variant='outline' type='submit'>
-							Fechar
-						</Button>
+						<DialogClose asChild>
+							<Button variant='outline' type='button'>
+								Fechar
+							</Button>
+						</DialogClose>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
