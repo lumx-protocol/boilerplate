@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Item } from '@/types';
 import { useState } from 'react';
 
-export const SuccessDialog = ({ item }: { item: Item }) => {
+export const SuccessDialog = ({ item, hash }: { item: Item; hash: string }) => {
 	const [closeModal, setCloseModal] = useState(true);
 
 	return (
@@ -36,15 +36,25 @@ export const SuccessDialog = ({ item }: { item: Item }) => {
 							<p className='break-words text-neutral-500 text-sm'>
 								{item.description || 'item description'}
 							</p>
+							<p className='text-sm text-neutral-500 pt-4'>
+								You can{' '}
+								<a
+									target='black'
+									href={`https://mumbai.polygonscan.com/tx/${hash}`}
+									className='underline text-black'
+								>
+									verify on chain
+								</a>
+							</p>
 						</article>
 					</div>
-					<DialogFooter className='flex-1 gap-6'>
+					<DialogFooter className='flex-1 gap-2'>
+						<Button className='w-full'>Ir para o perfil</Button>
 						<DialogClose asChild>
-							<Button variant='outline' type='button'>
+							<Button className='!ml-0' variant='outline' type='button'>
 								Fechar
 							</Button>
 						</DialogClose>
-						<Button className='w-full'>Ir para o perfil</Button>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>

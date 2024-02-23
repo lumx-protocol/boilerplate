@@ -15,7 +15,9 @@ export default async function Home({
 	return (
 		<div className='min-h-screen flex flex-col justify-between'>
 			<Header />
-			{searchParams.hash && <SuccessDialog item={item} />}
+			{searchParams.hash && (
+				<SuccessDialog item={item} hash={searchParams.hash} />
+			)}
 			<main className='sm:pb-24 pb-0 sm:px-[calc(100%-85vw)] px-[calc(5vw)]'>
 				<ItemInfo contract={contract} item={item} />
 			</main>
