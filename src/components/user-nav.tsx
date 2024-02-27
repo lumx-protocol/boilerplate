@@ -9,6 +9,7 @@ import {
 } from "./ui/dropdown-menu";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export const UserNav = ({ name }: { name: any }) => {
   const getInitialLetters = (name: string) => {
@@ -31,12 +32,22 @@ export const UserNav = ({ name }: { name: any }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="end" forceMount>
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile <ArrowUpRight className="ml-auto h-4 w-4" />
+          <DropdownMenuItem className="cursor-pointer">
+            <Link
+              className="flex items-center justify-between w-full"
+              href={`https://testnets.opensea.io/0xb27e3b5a6c35CBB8187784e7b21572f782f511Fa/${123123}`}
+            >
+              Profile <ArrowUpRight className="ml-auto h-4 w-4" />
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => localStorage.clear()}
+        >
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
