@@ -38,7 +38,7 @@ export const Content = ({
         {searchParams.hash && (
           <SuccessDialog item={item} hash={searchParams.hash} />
         )}
-        <main className="sm:pb-24 pb-0 sm:px-[calc(100%-85vw)] px-[calc(5vw)]">
+        <main className="sm:pb-24 pb-0 sm:px-[calc(15vw)] px-[calc(5vw)]">
           <ItemInfo {...props} />
         </main>
         <Footer />
