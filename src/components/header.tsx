@@ -3,9 +3,9 @@
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Profile } from "./profile";
-import { User } from "@/types";
+import { LoggedInUser } from "@lumx-protocol/embedded-wallet";
 
-export interface HeaderProps extends User {}
+export interface HeaderProps extends LoggedInUser {}
 
 export const Header = (props: HeaderProps) => {
   return (

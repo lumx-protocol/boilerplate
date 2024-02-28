@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ItemInfo } from "@/components/item";
 import { SuccessDialog } from "@/components/success-dialog";
-import { Contract, Item, User } from "@/types";
+import { Contract, Item } from "@/types";
 import { WalletContextProvider } from "@lumx-protocol/embedded-wallet";
 import { useState } from "react";
 
@@ -17,10 +17,9 @@ export const Content = ({
   item: Item;
   contract: Contract;
 }) => {
-  const [user, setUser] = useState<User>(
+  const [user, setUser] = useState(
     JSON.parse(window.localStorage.getItem("wallet.user") || "{}")
   );
-
   const props = { item, contract, user };
 
   return (
@@ -29,7 +28,7 @@ export const Content = ({
       isModal
       environment="sandbox"
       onFinishAuth={(user) => {
-        setUser(user as User);
+        setUser(user);
       }}
       theme="system"
     >

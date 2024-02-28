@@ -24,10 +24,3 @@ export type Contract = {
   endsAt: string;
   abi: { [key: string]: string }[];
 };
-
-export type User = {
-  walletAddress: string;
-  name: string;
-  walletId: string;
-  email: string;
-};

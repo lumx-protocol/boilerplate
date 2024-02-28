@@ -2,12 +2,13 @@ import Image from "next/image";
 import { Separator } from "./ui/separator";
 import { Clock } from "./ui/clock";
 import { ClaimForm } from "./claim-form";
-import { Contract, Item, User } from "@/types";
+import { Contract, Item } from "@/types";
+import { LoggedInUser } from "@lumx-protocol/embedded-wallet";
 
 export interface ItemInfoProps {
   item: Item;
   contract: Contract;
-  user: User;
+  user: LoggedInUser;
 }
 
 export const ItemInfo = ({ item, contract, user }: ItemInfoProps) => {
