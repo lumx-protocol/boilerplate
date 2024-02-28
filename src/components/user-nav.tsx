@@ -10,10 +10,8 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const UserNav = ({ name }: { name: string }) => {
-  const router = useRouter();
   const getInitialLetters = (name: string) => {
     return name
       .split(" ")
