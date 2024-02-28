@@ -4,11 +4,9 @@ import { Wallet } from "@lumx-protocol/embedded-wallet";
 
 import { UserNav } from "./user-nav";
 import { Separator } from "./ui/separator";
+import { User } from "@/types";
 
-export interface ProfileProps {
-  walletAddress: string;
-  name: string;
-}
+export interface ProfileProps extends User {}
 
 export const Profile = ({ name, walletAddress }: ProfileProps) => {
   const getAbbreviatedWalletAddress = (address: string) => {

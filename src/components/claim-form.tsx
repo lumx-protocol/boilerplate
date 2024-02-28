@@ -36,11 +36,8 @@ const SubmitButtonForm = () => {
   );
 };
 
-export const ClaimForm = () => {
-  const mintWithWalletId = mint.bind(
-    null,
-    "fc779ee2-3a3b-4332-9900-71bde7545aee"
-  );
+export const ClaimForm = ({ walletId }: { walletId: string }) => {
+  const mintWithWalletId = mint.bind(null, walletId);
   const [state, formAction] = useFormState(mintWithWalletId, transactionHash);
 
   useEffect(() => {

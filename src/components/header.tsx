@@ -3,8 +3,11 @@
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Profile } from "./profile";
+import { User } from "@/types";
 
-export const Header = (props: { walletAddress: string; name: string }) => {
+export interface HeaderProps extends User {}
+
+export const Header = (props: HeaderProps) => {
   return (
     <>
       <header className="flex gap-4 pt-12 items-center sm:px-[calc(100%-85vw)] px-[calc(5vw)]">

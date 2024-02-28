@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.50.1)
   '@lumx-protocol/embedded-wallet':
-    specifier: ^0.0.6
-    version: 0.0.6(@types/react-dom@18.2.19)(@types/react@18.2.55)(prop-types@15.8.1)(tailwindcss@3.4.1)
+    specifier: ^0.0.7
+    version: 0.0.7(@types/react-dom@18.2.19)(@types/react@18.2.55)(prop-types@15.8.1)(tailwindcss@3.4.1)
   '@radix-ui/react-avatar':
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
@@ -242,8 +242,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@lumx-protocol/embedded-wallet@0.0.6(@types/react-dom@18.2.19)(@types/react@18.2.55)(prop-types@15.8.1)(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-T1+ETa2EyrqfWyV7+Il/4XRQ8EK0/stvcwp3YMt23J05+QgjapzdFkoeWBEdjg17t9IajFXwfuDCMvwQ1lEGSg==}
+  /@lumx-protocol/embedded-wallet@0.0.7(@types/react-dom@18.2.19)(@types/react@18.2.55)(prop-types@15.8.1)(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-HGZBkfGcupEfmjUf7eXT4fhG+XV4YC825XyG+4hzxOr1EqDNzabSuxNQbsA1om21jVaYPHnT4y5xTF9J9rKBhw==}
     dependencies:
       '@formkit/auto-animate': 0.8.1
       '@hookform/resolvers': 3.3.4(react-hook-form@7.50.1)

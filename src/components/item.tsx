@@ -2,16 +2,17 @@ import Image from "next/image";
 import { Separator } from "./ui/separator";
 import { Clock } from "./ui/clock";
 import { ClaimForm } from "./claim-form";
-import { Contract, Item } from "@/types";
+import { Contract, Item, User } from "@/types";
 
 export interface ItemInfoProps {
   item: Item;
   contract: Contract;
+  user: User;
 }
 
-export const ItemInfo = ({ item, contract }: ItemInfoProps) => {
+export const ItemInfo = ({ item, contract, user }: ItemInfoProps) => {
   const { name, description, imageUrl } = item;
-  const { maxPerAddress, startsAt, name: contractName, endsAt } = contract;
+  const { startsAt, name: contractName, endsAt } = contract;
 
   const defineMintWindow = () => {
     const start = new Date(startsAt).getTime();
@@ -47,9 +48,8 @@ export const ItemInfo = ({ item, contract }: ItemInfoProps) => {
           {contractName || "Contract Name"}
         </h2>
         <p className="break-words max-w-[600px]">{description}</p>
-        <ClaimForm />
+        <ClaimForm walletId={user.walletId} />
         <Separator className="mt-9 mb-4" />
-        {/* <span className='font-medium text-sm text-neutral-500'>Mints 9999</span> */}
         <Clock deadline={defineMintWindow()} />
       </article>
     </div>
