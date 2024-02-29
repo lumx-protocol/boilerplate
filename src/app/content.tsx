@@ -7,6 +7,7 @@ import { SuccessDialog } from "@/components/success-dialog";
 import { Contract, Item } from "@/types";
 import { WalletContextProvider } from "@lumx-protocol/embedded-wallet";
 import { useState } from "react";
+import config from "../../lumx.json";
 
 export const Content = ({
   searchParams,
@@ -24,7 +25,7 @@ export const Content = ({
 
   return (
     <WalletContextProvider
-      clientId={process.env.NEXT_PUBLIC_CLIENT_ID as string}
+      clientId={config.clientId}
       isModal
       environment="sandbox"
       onFinishAuth={(user) => {

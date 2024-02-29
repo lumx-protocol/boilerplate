@@ -11,6 +11,24 @@ export type Item = {
   uriNumber: number;
 };
 
+export interface WalletItems {
+  id: string;
+  address: string;
+  tokens: {
+    [key: string]: {
+      itemTypeId: string;
+      contractType: string;
+      tokenAddress: string;
+      tokenId: string;
+      tokenUri: string;
+      metadata: {};
+      name: string;
+      symbol: string;
+      amount: number;
+    }[];
+  };
+}
+
 export type Contract = {
   name: string;
   description: string;

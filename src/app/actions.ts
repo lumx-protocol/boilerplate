@@ -1,65 +1,64 @@
-'use server';
+"use server";
+
+import config from "../../lumx.json";
 
 export const mint = async (
-	walletId: string,
-	prevState: any,
-	formData: FormData
+  walletId: string,
+  prevState: any,
+  formData: FormData
 ) => {
-	console.log('minting', walletId, prevState, formData);
-	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_PROTOCOL_URL}/transactions/mints`,
-		{
-			method: 'POST',
-			body: JSON.stringify({
-				amount: Number(formData.get('quantity')),
-				walletId,
-				itemTypeId: process.env.NEXT_PUBLIC_ITEM_TYPE_ID,
-			}),
-			headers: {
-				'Content-type': 'application/json',
-				Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
-			},
-		}
-	);
+  console.log("minting", walletId, prevState, formData);
+  const response = await fetch(`${config.protocolUrl}/transactions/mints`, {
+    method: "POST",
+    body: JSON.stringify({
+      amount: Number(formData.get("quantity")),
+      walletId,
+      itemTypeId: config.itemTypeId,
+    }),
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+    },
+  });
 
-	const data = await response.json();
+  const data = await response.json();
 
-	let dataFromTransaction;
+  let dataFromTransaction;
 
-	function interval() {
-		return new Promise<string>(function (resolve, reject) {
-			const interval = setInterval(async () => {
-				console.log('interval started');
-				const responseFromTransaction = await fetch(
-					`${process.env.NEXT_PUBLIC_PROTOCOL_URL}/transactions/${data.id}`,
-					{
-						headers: {
-							'Content-type': 'application/json',
-							Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
-						},
-					}
-				);
+  function interval() {
+    return new Promise<string>(function (resolve, reject) {
+      const interval = setInterval(async () => {
+        console.log("interval started");
+        const responseFromTransaction = await fetch(
+          `${config.protocolUrl}/transactions/${data.id}`,
+          {
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+            },
+          }
+        );
 
-				dataFromTransaction = await responseFromTransaction.json();
+        dataFromTransaction = await responseFromTransaction.json();
 
-				console.log(dataFromTransaction, 'dataFromTransaction');
+        console.log(dataFromTransaction, "dataFromTransaction");
 
-				if (['failed', 'error'].includes(dataFromTransaction.status))
-					clearInterval(interval);
+        if (["failed", "error"].includes(dataFromTransaction.status))
+          clearInterval(interval);
 
-				if (dataFromTransaction.status === 'success') {
-					clearInterval(interval);
-					resolve(dataFromTransaction.transactionHash);
-				}
-			}, 1000);
-		});
-	}
+        if (dataFromTransaction.status === "success") {
+          clearInterval(interval);
+          resolve(dataFromTransaction.transactionHash);
+        }
+      }, 1000);
+    });
+  }
 
-	let hash: string;
+  let hash: string;
 
-	const val = await interval();
+  const val = await interval();
 
-	hash = val;
+  hash = val;
 
-	return hash;
+  return hash;
 };

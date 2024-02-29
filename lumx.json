@@ -1,0 +1,11 @@
+{
+  "clientId": "cb63683f-c98b-4ac4-8dfc-4692daaab6a0",
+  "contractId": "2a0f096c-805a-4a2c-970e-21c480c6f58f",
+  "itemTypeId": "545fb8b8-8a87-40f4-925f-431feaae8625",
+  "protocolUrl": "https://protocol-sandbox.lumx.io/v1",
+  "extensions": [
+    "token-gated"
+  ],
+  "pageTitle": "Lumx Dapp",
+  "pageDescription": "Welcome to Lumx Dapp"
+}
