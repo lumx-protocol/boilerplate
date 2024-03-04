@@ -1,13 +1,13 @@
 "use client";
 
-import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ItemInfo } from "@/components/item";
 import { SuccessDialog } from "@/components/success-dialog";
 import { Contract, Item } from "@/types";
 import { WalletContextProvider } from "@lumx-protocol/embedded-wallet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import config from "../../lumx.json";
+import { Footer } from "@/components/footer";
 
 export const Content = ({
   searchParams,
@@ -23,6 +23,13 @@ export const Content = ({
   );
   const props = { item, contract, user };
 
+  useEffect(() => {
+    if (JSON.parse(window.localStorage.getItem("wallet.user") || "{}"))
+      document.cookie = `walletId=${user.walletId}`;
+  }, []);
+
+  const successDialogProps = { item, hash: searchParams.hash, user, contract };
+
   return (
     <WalletContextProvider
       clientId={config.clientId}
@@ -30,14 +37,13 @@ export const Content = ({
       environment="sandbox"
       onFinishAuth={(user) => {
         setUser(user);
+        document.cookie = `walletId=${user.walletId}`;
       }}
       theme="system"
     >
       <div className="min-h-screen flex flex-col justify-between">
         <Header {...user} />
-        {searchParams.hash && (
-          <SuccessDialog item={item} hash={searchParams.hash} />
-        )}
+        {searchParams.hash && <SuccessDialog {...successDialogProps} />}
         <main className="sm:pb-24 pb-0 sm:px-[calc(15vw)] px-[calc(5vw)]">
           <ItemInfo {...props} />
         </main>

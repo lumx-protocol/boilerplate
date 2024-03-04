@@ -7,21 +7,27 @@ export const mint = async (
   prevState: any,
   formData: FormData
 ) => {
-  console.log("minting", walletId, prevState, formData);
-  const response = await fetch(`${config.protocolUrl}/transactions/mints`, {
-    method: "POST",
-    body: JSON.stringify({
-      amount: Number(formData.get("quantity")),
-      walletId,
-      itemTypeId: config.itemTypeId,
-    }),
-    headers: {
-      "Content-type": "application/json",
-      Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
-    },
-  });
+  console.log("minting", walletId, prevState, formData, config.itemTypeId);
 
-  const data = await response.json();
+  let response;
+  try {
+    response = await fetch(`${config.protocolUrl}/transactions/mints`, {
+      method: "POST",
+      body: JSON.stringify({
+        amount: Number(formData.get("quantity")),
+        walletId,
+        itemTypeId: config.itemTypeId,
+      }),
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+  }
+
+  const data = await response?.json();
 
   let dataFromTransaction;
 

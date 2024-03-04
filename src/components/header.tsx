@@ -14,16 +14,22 @@ export const Header = (props: HeaderProps) => {
   return (
     <>
       <header className="flex gap-4 pt-12 items-center sm:px-[calc(15vw)] px-[calc(5vw)]">
-        <Image src="./lumx-logo.svg" height={39} width={39} alt="lumx logo" />
+        <Image
+          src="./lumx-logo.svg"
+          height={39}
+          width={39}
+          alt="lumx logo"
+          className=""
+        />
         <Button
           className={cn("w-fit hidden sm:block", {
-            "mr-auto": !config.extensions.includes("token-gated"),
+            "mr-auto": !config.addons.includes("tokengating"),
           })}
           variant={"secondary"}
         >
           Welcome
         </Button>
-        {config.extensions.includes("token-gated") && (
+        {config.addons.includes("tokengating") && (
           <Button
             className="mr-auto bg-[length:400%_400%] bg-right-bottom bg-gradient-to-tr animate-moving-gradient from-[#401689] from-30% via-[#6e05ff] to-[#00B7FF]  hover:scale-110 hover:animate-moving-gradient-fast transition-all shadow-md"
             asChild

@@ -42,3 +42,21 @@ export type Contract = {
   endsAt: string;
   abi: { [key: string]: string }[];
 };
+
+export interface WalletItems {
+  id: string;
+  address: string;
+  tokens: {
+    [key: string]: {
+      itemTypeId: string;
+      contractType: string;
+      tokenAddress: string;
+      tokenId: string;
+      tokenUri: string;
+      metadata: {};
+      name: string;
+      symbol: string;
+      amount: number;
+    }[];
+  };
+}

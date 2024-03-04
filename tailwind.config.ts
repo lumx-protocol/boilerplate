@@ -31,12 +31,18 @@ const config = {
           "0%, 100%": { "background-position": "0% 50%" },
           "50%": { "background-position": "100% 50%" },
         },
+        "moving-logo": {
+          "0%": { transform: "rotate(360deg)" },
+          "50%": { transform: "rotate(180deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "moving-gradient": "moving-gradient 6s infinite ease-out",
         "moving-gradient-fast": "moving-gradient 2s infinite ease-out",
+        "moving-logo": "moving-logo 2s ease-out",
       },
     },
   },

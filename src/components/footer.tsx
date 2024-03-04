@@ -6,7 +6,7 @@ export const Footer = () => {
       <Separator />
       <div className="flex h-[80px] items-center justify-between sm:px-[calc(15vw)] px-[calc(5vw)]">
         <p className="text-sm leading-6">
-          <span className="hidden sm:inline-block">
+          <span className="hidden sm:inline-block mr-1">
             Launch your project with{" "}
           </span>
           <a
