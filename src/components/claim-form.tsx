@@ -51,6 +51,7 @@ export const ClaimForm = ({ walletId }: { walletId: string }) => {
       <Input
         id="quantity"
         type="number"
+        defaultValue={1}
         name="quantity"
         className="sm:w-[111px] w-full text-center"
         required
