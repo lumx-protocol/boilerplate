@@ -7,9 +7,10 @@ import type { NextRequest } from "next/server";
 //No support for axios on middleware..
 export async function middleware(request: NextRequest) {
   const cookie = cookies().get("walletId");
+  console.log(cookie);
 
-  if (!cookie) {
-    return NextResponse.redirect(new URL("/not-allowed", request.url));
+  if (!cookie || !cookie.value) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   const getUser = async () => {

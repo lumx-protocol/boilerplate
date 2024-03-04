@@ -12,6 +12,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { createLink } from "@/helpers";
 import { LoggedInUser } from "@lumx-protocol/embedded-wallet";
+import { cookies } from "next/headers";
 
 export const UserNav = ({
   name,
@@ -60,6 +61,7 @@ export const UserNav = ({
           onClick={() => {
             localStorage.clear();
             window.location.reload();
+            document.cookie = `walletId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
           }}
         >
           Log out

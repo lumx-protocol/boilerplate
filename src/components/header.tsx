@@ -22,12 +22,13 @@ export const Header = (props: HeaderProps) => {
           className=""
         />
         <Button
+          asChild
           className={cn("w-fit hidden sm:block", {
             "mr-auto": !config.addons.includes("tokengating"),
           })}
           variant={"secondary"}
         >
-          Welcome
+          <Link href="/">Welcome</Link>
         </Button>
         {config.addons.includes("tokengating") && (
           <Button

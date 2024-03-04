@@ -39,7 +39,7 @@ export const Content = ({
         setUser(user);
         document.cookie = `walletId=${user.walletId}`;
       }}
-      theme="system"
+      theme="light"
     >
       <div className="min-h-screen flex flex-col justify-between">
         <Header {...user} />
