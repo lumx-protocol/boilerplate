@@ -37,8 +37,9 @@ export const SuccessDialog = ({
                   src={item.imageUrl}
                   alt={"image"}
                   className="sm:flex-1 rounded-md"
-                  width={600}
-                  height={600}
+                  width={232}
+                  height={232}
+                  objectFit="cover"
                 />
               ) : (
                 <div className="h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300" />
