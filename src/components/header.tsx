@@ -17,16 +17,16 @@ export const Header = (props: HeaderProps) => {
         <Image src="./lumx-logo.svg" height={39} width={39} alt="lumx logo" />
         <Button
           asChild
-          className={cn("w-fit hidden sm:block", {
-            "mr-auto": !config.addons.includes("tokengating"),
-          })}
+          // className={cn("w-fit hidden sm:block", {
+          //   "mr-auto": !config.addons.includes("tokengating"),
+          // })}
           variant={"secondary"}
         >
           <Link href="/">Welcome</Link>
         </Button>
         {config.addons.includes("tokengating") && (
           <Button
-            className="mr-auto bg-[length:400%_400%] bg-right-bottom bg-gradient-to-tr animate-moving-gradient from-[#401689] from-30% via-[#6e05ff] to-[#00B7FF]  hover:scale-110 hover:animate-moving-gradient-fast transition-all shadow-md"
+            className="mr-auto bg-[length:400%_400%] bg-right-bottom bg-gradient-to-tr animate-moving-gradient from-[#6e05ff] from-30% via-[#401689] to-[#00B7FF] transition-all shadow-md"
             asChild
           >
             <div className="relative">
