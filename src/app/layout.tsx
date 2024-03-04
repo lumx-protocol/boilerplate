@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/footer";
+import config from "../../lumx.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lumx Nft",
-  description: "Boilerplate page",
+  title: config.pageTitle,
+  description: config.pageDescription,
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ const Content = () => {
     <WalletContextProvider
       clientId={config.clientId}
       isModal
-      environment={process.env.LUMX_ENV as "sandbox" | "production"}
+      environment={process.env.NEXT_PUBLIC_LUMX_ENV as "sandbox" | "production"}
       onFinishAuth={(user) => {
         setUser(user);
       }}

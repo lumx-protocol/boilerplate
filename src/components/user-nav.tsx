@@ -50,6 +50,7 @@ export const UserNav = ({
                 prodSubdomain: "",
                 testSubdomain: "testnets.",
               })}
+              target="_blank"
             >
               Profile <ArrowUpRight className="ml-auto h-4 w-4" />
             </Link>

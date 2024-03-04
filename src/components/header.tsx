@@ -14,13 +14,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <>
       <header className="flex gap-4 pt-12 items-center sm:px-[calc(15vw)] px-[calc(5vw)]">
-        <Image
-          src="./lumx-logo.svg"
-          height={39}
-          width={39}
-          alt="lumx logo"
-          className=""
-        />
+        <Image src="./lumx-logo.svg" height={39} width={39} alt="lumx logo" />
         <Button
           asChild
           className={cn("w-fit hidden sm:block", {

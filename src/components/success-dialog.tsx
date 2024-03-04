@@ -30,21 +30,21 @@ export const SuccessDialog = ({
       <Dialog open={closeModal} onOpenChange={setCloseModal}>
         <DialogContent className="sm:max-w-[520px] w-screen h-screen sm:h-auto">
           <div className="flex sm:flex-row flex-col gap-4 sm:items-center pt-6 sm:pt-0">
-            {contract.type === "non-fungible" && (
-              <>
-                {item.imageUrl ? (
-                  <Image
-                    src={item.imageUrl}
-                    alt={"image"}
-                    className="sm:flex-1 rounded-md"
-                    width={600}
-                    height={600}
-                  />
-                ) : (
-                  <div className="h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300" />
-                )}
-              </>
-            )}
+            {/* {contract.type === "non-fungible" && ( */}
+            <>
+              {item.imageUrl ? (
+                <Image
+                  src={item.imageUrl}
+                  alt={"image"}
+                  className="sm:flex-1 rounded-md"
+                  width={600}
+                  height={600}
+                />
+              ) : (
+                <div className="h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300" />
+              )}
+            </>
+            {/* )} */}
             <article className="sm:flex-1">
               <h4 className="text-sm leading-[14px] text-neutral-500 font-medium pb-1.5">
                 Congratulations
