@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
       `${process.env.NEXT_PUBLIC_PROTOCOL_URL}/wallets/${cookie?.value}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+          Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
         },
       }
     );

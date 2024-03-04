@@ -1,5 +1,3 @@
-import config from "../../lumx.json";
-
 export const createLink = ({
   href,
   path,
@@ -12,6 +10,6 @@ export const createLink = ({
   testSubdomain: string;
 }) => {
   return `https://${
-    config.environment === "sandbox" ? testSubdomain : prodSubdomain
+    process.env.LUMX_ENV === "sandbox" ? testSubdomain : prodSubdomain
   }${href}/${path}`;
 };

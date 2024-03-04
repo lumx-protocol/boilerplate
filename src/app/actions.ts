@@ -1,5 +1,6 @@
 "use server";
 
+import { getBaseApiUrl } from "@/api";
 import config from "../../lumx.json";
 
 export const mint = async (
@@ -11,7 +12,7 @@ export const mint = async (
 
   let response;
   try {
-    response = await fetch(`${config.protocolUrl}/transactions/mints`, {
+    response = await fetch(`${getBaseApiUrl()}/transactions/mints`, {
       method: "POST",
       body: JSON.stringify({
         amount: Number(formData.get("quantity")),
@@ -20,7 +21,7 @@ export const mint = async (
       }),
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+        Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
       },
     });
   } catch (e) {
@@ -36,11 +37,11 @@ export const mint = async (
       const interval = setInterval(async () => {
         console.log("interval started");
         const responseFromTransaction = await fetch(
-          `${config.protocolUrl}/transactions/${data.id}`,
+          `${getBaseApiUrl()}/transactions/${data.id}`,
           {
             headers: {
               "Content-type": "application/json",
-              Authorization: `Bearer ${process.env.PROTOCOL_KEY}`,
+              Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
             },
           }
         );
