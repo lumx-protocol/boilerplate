@@ -10,7 +10,7 @@ export const Footer = () => {
             Launch your project with{" "}
           </span>
           <a
-            className="underline text-neutral-900"
+            className="underline text-neutral-900 dark:text-neutral-100"
             href="https://docs.lumx.io/get-started/introduction"
             target="_blank"
           >

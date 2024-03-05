@@ -33,7 +33,7 @@ export const UserNav = ({
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src="/avatars/01.png" alt={name} />
-            <AvatarFallback className="bg-[#6E05FF] text-white">
+            <AvatarFallback className="bg-[#6E05FF] dark:bg-[#6E05FF] text-white">
               {getInitialLetters(name)}
             </AvatarFallback>
           </Avatar>

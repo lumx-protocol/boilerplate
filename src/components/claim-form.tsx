@@ -66,6 +66,7 @@ export const ClaimForm = ({
       ) : (
         <Button
           type="button"
+          className="sm:w-auto w-full"
           onClick={() => updateModalVisibility(!isModalVisible)}
         >
           Mint
