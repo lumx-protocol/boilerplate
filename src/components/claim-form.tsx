@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { mint } from "@/app/actions";
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
-import { redirect } from "next/navigation";
 import { Spinner } from "./ui/spinner";
 import {
   isModalVisible,
@@ -36,15 +35,21 @@ const SubmitButtonForm = () => {
   );
 };
 
-export const ClaimForm = ({ walletId }: { walletId: string }) => {
+export const ClaimForm = ({
+  walletId,
+  setHash,
+}: {
+  walletId: string;
+  setHash: (hash: string) => void;
+}) => {
   const mintWithWalletId = mint.bind(null, walletId);
-  const [state, formAction] = useFormState(mintWithWalletId, transactionHash);
+  const [hash, formAction] = useFormState(mintWithWalletId, transactionHash);
 
   useEffect(() => {
-    if (state.includes("0x")) {
-      redirect(`?hash=${state}`);
+    if (hash.includes("0x")) {
+      setHash(hash);
     }
-  }, [state]);
+  }, [hash]);
 
   return (
     <form action={formAction} className="flex gap-4 pt-4">

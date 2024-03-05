@@ -10,25 +10,24 @@ import config from "../../lumx.json";
 import { Footer } from "@/components/footer";
 
 export const Content = ({
-  searchParams,
   item,
   contract,
 }: {
-  searchParams: { hash: string };
   item: Item;
   contract: Contract;
 }) => {
   const [user, setUser] = useState(
     JSON.parse(window.localStorage.getItem("wallet.user") || "{}")
   );
-  const props = { item, contract, user };
+  const [hash, setHash] = useState("");
+  const props = { item, contract, user, setHash };
 
   useEffect(() => {
     if (JSON.parse(window.localStorage.getItem("wallet.user") || "{}"))
       document.cookie = `walletId=${user.walletId}`;
   }, []);
 
-  const successDialogProps = { item, hash: searchParams.hash, user, contract };
+  const successDialogProps = { item, hash, user, contract };
 
   return (
     <WalletContextProvider
@@ -43,7 +42,7 @@ export const Content = ({
     >
       <div className="min-h-screen flex flex-col justify-between">
         <Header {...user} />
-        {searchParams.hash && <SuccessDialog {...successDialogProps} />}
+        {hash && <SuccessDialog {...successDialogProps} />}
         <main className="sm:pb-24 pb-0 sm:px-[calc(15vw)] px-[calc(5vw)]">
           <ItemInfo {...props} />
         </main>

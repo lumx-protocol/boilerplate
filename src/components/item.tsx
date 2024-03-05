@@ -9,11 +9,13 @@ export interface ItemInfoProps {
   item: Item;
   contract: Contract;
   user: LoggedInUser;
+  setHash: (hash: string) => void;
 }
 
-export const ItemInfo = ({ item, contract, user }: ItemInfoProps) => {
+export const ItemInfo = ({ item, contract, user, setHash }: ItemInfoProps) => {
   const { name, description, imageUrl } = item;
   const { startsAt, name: contractName, endsAt } = contract;
+  const claimFormProps = { walletId: user.walletId, setHash };
 
   const defineMintWindow = () => {
     const start = new Date(startsAt).getTime();
@@ -49,7 +51,7 @@ export const ItemInfo = ({ item, contract, user }: ItemInfoProps) => {
           {contractName || "Contract Name"}
         </h2>
         <p className="break-words max-w-[600px]">{description}</p>
-        <ClaimForm walletId={user.walletId} />
+        <ClaimForm {...claimFormProps} />
         <Separator className="mt-9 mb-4" />
         <Clock deadline={defineMintWindow()} />
       </article>

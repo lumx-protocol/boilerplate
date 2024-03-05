@@ -23,8 +23,6 @@ export const SuccessDialog = ({
 }) => {
   const [closeModal, setCloseModal] = useState(true);
 
-  console.log(contract);
-
   return (
     <>
       <Dialog open={closeModal} onOpenChange={setCloseModal}>
