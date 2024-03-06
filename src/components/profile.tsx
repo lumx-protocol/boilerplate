@@ -31,7 +31,7 @@ export const Profile = ({ name, walletAddress }: ProfileProps) => {
       ) : (
         <Wallet />
       )}
-      <ModeToggle />
+      {/* <ModeToggle /> */}
     </div>
   );
 };
