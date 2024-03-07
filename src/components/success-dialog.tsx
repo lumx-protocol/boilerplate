@@ -34,7 +34,7 @@ export const SuccessDialog = ({
                 <Image
                   src={item.imageUrl}
                   alt={"image"}
-                  className="sm:flex-1 rounded-md"
+                  className="sm:flex-1 rounded-md w-full"
                   width={232}
                   height={232}
                   objectFit="cover"
@@ -46,7 +46,7 @@ export const SuccessDialog = ({
             {/* )} */}
             <article className="sm:flex-1">
               <h4 className="text-sm leading-[14px] text-neutral-500 font-medium pb-1.5">
-                Congratulations
+                Parabéns
               </h4>
               <h1 className="font-semibold text-xl tracking-[-0.75%] pb-1.5">
                 {item.name || "Item Name"}
@@ -55,7 +55,7 @@ export const SuccessDialog = ({
                 {item.description || "item description"}
               </p>
               <p className="text-sm text-neutral-500 pt-4">
-                You can{" "}
+                Você pode{" "}
                 <a
                   target="black"
                   href={createLink({
@@ -66,12 +66,17 @@ export const SuccessDialog = ({
                   })}
                   className="underline text-black"
                 >
-                  verify on chain
+                  verificar na blockchain!
                 </a>
               </p>
             </article>
           </div>
           <DialogFooter className="flex-1 gap-2">
+            <DialogClose asChild>
+              <Button className="!ml-0" variant="outline" type="button">
+                Fechar
+              </Button>
+            </DialogClose>
             <Button className="w-full" asChild>
               <Link
                 target="_blank"
@@ -82,14 +87,9 @@ export const SuccessDialog = ({
                   testSubdomain: "testnets.",
                 })}
               >
-                See my profile
+                Ver meu perfil
               </Link>
             </Button>
-            <DialogClose asChild>
-              <Button className="!ml-0" variant="outline" type="button">
-                Fechar
-              </Button>
-            </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>

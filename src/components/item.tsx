@@ -42,7 +42,7 @@ export const ItemInfo = ({ item, contract, user, setHash }: ItemInfoProps) => {
       )}
       <article>
         <h4 className="text-sm leading-[14px] text-neutral-500 font-medium pb-1.5">
-          Minting now
+          Resgate agora!
         </h4>
         <h1 className="font-semibold text-3xl tracking-[-0.75%] pb-1.5">
           {name || "Item Name"}

@@ -26,10 +26,10 @@ const SubmitButtonForm = () => {
       {pending ? (
         <div className="flex items-center gap-2">
           <Spinner className="stroke-white" />
-          Claiming
+          Resgatando..
         </div>
       ) : (
-        "Mint"
+        "Resgatar"
       )}
     </Button>
   );
@@ -69,7 +69,7 @@ export const ClaimForm = ({
           className="sm:w-auto w-full"
           onClick={() => updateModalVisibility(!isModalVisible)}
         >
-          Mint
+          Resgatar
         </Button>
       )}
     </form>

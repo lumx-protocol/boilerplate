@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="flex h-[80px] items-center justify-between sm:px-[calc(15vw)] px-[calc(5vw)]">
         <p className="text-sm leading-6">
           <span className="hidden sm:inline-block mr-1">
-            Launch your project with{" "}
+            Lance seu projeto com{" "}
           </span>
           <a
             className="underline text-neutral-900 dark:text-neutral-100"
@@ -18,9 +18,9 @@ export const Footer = () => {
           </a>
         </p>
         <div className="ml-auto flex gap-4 text-neutral-500 font-medium sm:text-sm text-xs">
-          <a>Community</a>
-          <a>Terms of Service</a>
-          <a>Privacy Policy</a>
+          <a>Comunidade</a>
+          <a>Termos de serviço</a>
+          <a>Política de privacidade</a>
         </div>
       </div>
     </footer>

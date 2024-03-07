@@ -52,7 +52,7 @@ export const UserNav = ({
               })}
               target="_blank"
             >
-              Profile <ArrowUpRight className="ml-auto h-4 w-4" />
+              Perfil <ArrowUpRight className="ml-auto h-4 w-4" />
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -65,7 +65,7 @@ export const UserNav = ({
             document.cookie = `walletId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
           }}
         >
-          Log out
+          Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

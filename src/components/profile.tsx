@@ -20,7 +20,7 @@ export const Profile = ({ name, walletAddress }: ProfileProps) => {
       {Boolean(walletAddress && name) ? (
         <div className="flex h-10 items-center space-x-4 text-sm">
           <div className="hidden sm:block">
-            <h4 className="text-sm font-medium">Hello, {name}</h4>
+            <h4 className="text-sm font-medium">Olá, {name}</h4>
             <p className="text-xs text-neutral-700">
               {getAbbreviatedWalletAddress(walletAddress)}
             </p>
@@ -31,7 +31,7 @@ export const Profile = ({ name, walletAddress }: ProfileProps) => {
       ) : (
         <Wallet />
       )}
-      {/* <ModeToggle /> */}
+      <ModeToggle />
     </div>
   );
 };

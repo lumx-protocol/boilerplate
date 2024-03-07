@@ -6,8 +6,7 @@ export default async function Home({
 }: {
   searchParams: { hash: string };
 }) {
-  const item = await getItemType();
-  const contract = await getContract();
+  const [item, contract] = await Promise.all([getItemType(), getContract()]);
 
   const props = { item, contract, searchParams };
 

@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { Menu } from "lucide-react";
 import Image from "next/image";
 
 const items = [
@@ -33,7 +32,7 @@ export function MobileNav({ name }: { name: string }) {
           variant="ghost"
           className="self-start p-0 mt-8 ml-[calc(5vw)] text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <Menu />
+          <Image src="./lumx-logo.svg" height={39} width={39} alt="lumx logo" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
@@ -43,8 +42,7 @@ export function MobileNav({ name }: { name: string }) {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Image src="./lumx-logo.svg" height={39} width={39} alt="lumx logo" />
-          <span className="font-medium pl-2">Hello, {name}</span>
+          <span className="font-medium">Olá, {name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
           <div className="flex flex-col space-y-3">
@@ -117,7 +115,7 @@ function MobileLink({
         router.push(href.toString());
         onOpenChange?.(false);
       }}
-      className={cn(className)}
+      className={cn(className, "text-sm")}
       {...props}
     >
       {children}
