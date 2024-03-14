@@ -2,17 +2,25 @@
 
 import { getBaseApiUrl } from "@/api";
 import config from "../../lumx.json";
+import { typedFetch } from "@/api/typed-fetch";
 
-export const mint = async (
+type Transaction = {
+  status: string;
+  message: string;
+  transactionHash: string;
+  id: string;
+};
+
+export const startTransaction = async (
   walletId: string,
   prevState: any,
   formData: FormData
-) => {
-  console.log("minting", walletId, prevState, formData, config.itemTypeId);
+): Promise<Transaction> => {
+  console.log("minting", walletId, formData, config.itemTypeId);
 
-  let response;
-  try {
-    response = await fetch(`${getBaseApiUrl()}/transactions/mints`, {
+  const transaction = await typedFetch<Transaction>(
+    `${getBaseApiUrl()}/transactions/mints`,
+    {
       method: "POST",
       body: JSON.stringify({
         amount: Number(formData.get("quantity")),
@@ -23,21 +31,23 @@ export const mint = async (
         "Content-type": "application/json",
         Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
       },
-    });
-  } catch (e) {
-    console.log(e);
+    }
+  );
+
+  if (transaction.status === "error") {
+    return {
+      status: "error",
+      message: transaction.message,
+      transactionHash: "",
+      id: "",
+    };
   }
 
-  const data = await response?.json();
-
-  let dataFromTransaction;
-
-  function interval() {
-    return new Promise<string>(function (resolve, reject) {
+  const pollTransaction = () => {
+    return new Promise<Transaction>(function (resolve) {
       const interval = setInterval(async () => {
-        console.log("interval started");
         const responseFromTransaction = await fetch(
-          `${getBaseApiUrl()}/transactions/${data.id}`,
+          `${getBaseApiUrl()}/transactions/${transaction.id}`,
           {
             headers: {
               "Content-type": "application/json",
@@ -46,26 +56,36 @@ export const mint = async (
           }
         );
 
-        dataFromTransaction = await responseFromTransaction.json();
+        const dataFromTransaction = await responseFromTransaction.json();
 
-        console.log(dataFromTransaction, "dataFromTransaction");
+        const { status, transactionHash = null } = dataFromTransaction;
 
-        if (["failed", "error"].includes(dataFromTransaction.status))
+        if (["failed", "error"].includes(status)) {
+          console.log("ERROR", dataFromTransaction);
           clearInterval(interval);
+          resolve({
+            status: "error",
+            message: "Houve um erro com seu mint",
+            transactionHash: "",
+            id: transaction.id,
+          });
+        }
 
-        if (dataFromTransaction.status === "success") {
+        if (status === "success") {
+          console.log("SUCCESS", dataFromTransaction);
           clearInterval(interval);
-          resolve(dataFromTransaction.transactionHash);
+          resolve({
+            status: "success",
+            transactionHash,
+            id: transaction.id,
+            message: "",
+          });
         }
       }, 1000);
     });
-  }
+  };
 
-  let hash: string;
+  const transactionResult = await pollTransaction();
 
-  const val = await interval();
-
-  hash = val;
-
-  return hash;
+  return transactionResult;
 };

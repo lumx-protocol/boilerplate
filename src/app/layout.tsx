@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import config from "../../lumx.json";
 import { ThemeProvider } from "@/components/theme-provider";
+import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +30,7 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col justify-between">
             {children}
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
