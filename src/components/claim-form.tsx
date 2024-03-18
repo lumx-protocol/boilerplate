@@ -24,15 +24,6 @@ const initialTransactionState = {
 
 const SubmitButtonForm = () => {
   const { pending } = useFormStatus();
-  console.log(pending);
-  const [pendingPhrase, setPendingPhrase] = useState("Preparando seu mint!");
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (pendingPhrase === "Preparando seu mint!")
-        setPendingPhrase("Enviando para a blockchain");
-    }, 2000);
-  }, [pending]);
 
   return (
     <Button
@@ -44,7 +35,7 @@ const SubmitButtonForm = () => {
       {pending ? (
         <div className="flex items-center gap-2">
           <Spinner className="stroke-white" />
-          {pendingPhrase}
+          Resgatando..
         </div>
       ) : (
         "Resgatar"
@@ -69,17 +60,17 @@ export const ClaimForm = ({
 
   //TODO: better way of handling toast without useEffect
   useEffect(() => {
-    console.log(transaction.id);
     if (transaction.status === "success") {
       setHash(transaction.transactionHash);
       return;
     }
 
-    toast({
-      title: "Erro",
-      description: transaction.message,
-      variant: "destructive",
-    });
+    if (transaction.status === "error")
+      toast({
+        title: "Erro",
+        description: transaction.message,
+        variant: "destructive",
+      });
   }, [transaction.id]);
 
   return (
