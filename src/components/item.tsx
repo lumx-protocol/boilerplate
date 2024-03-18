@@ -15,7 +15,7 @@ export interface ItemInfoProps {
 export const ItemInfo = ({ item, contract, user, setHash }: ItemInfoProps) => {
   const { name, description, imageUrl } = item;
   const { startsAt, name: contractName, endsAt } = contract;
-  const claimFormProps = { walletId: user.walletId, setHash };
+  const claimFormProps = { user, setHash };
 
   const defineMintWindow = () => {
     const start = new Date(startsAt).getTime();

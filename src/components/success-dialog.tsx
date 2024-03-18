@@ -14,27 +14,32 @@ export const SuccessDialog = ({
   item,
   hash,
   user,
-  contract,
+  setHash,
 }: {
   item: Item;
   hash: string;
   user: LoggedInUser;
-  contract: Contract;
+  setHash: (hash: string) => void;
 }) => {
   const [closeModal, setCloseModal] = useState(true);
 
   return (
     <>
-      <Dialog open={closeModal} onOpenChange={setCloseModal}>
+      <Dialog
+        open={closeModal}
+        onOpenChange={() => {
+          setCloseModal(false);
+          setHash("");
+        }}
+      >
         <DialogContent className="sm:max-w-[520px] w-screen h-screen sm:h-auto">
           <div className="flex sm:flex-row flex-col gap-4 sm:items-center pt-6 sm:pt-0">
-            {/* {contract.type === "non-fungible" && ( */}
             <>
               {item.imageUrl ? (
                 <Image
                   src={item.imageUrl}
                   alt={"image"}
-                  className="sm:flex-1 rounded-md w-full"
+                  className="sm:flex-1 rounded-md w-full sm:w-[232px]"
                   width={232}
                   height={232}
                   objectFit="cover"
@@ -43,7 +48,6 @@ export const SuccessDialog = ({
                 <div className="h-[600px] flex-shrink-0 w-[600px] rounded-md bg-neutral-300" />
               )}
             </>
-            {/* )} */}
             <article className="sm:flex-1">
               <h4 className="text-sm leading-[14px] text-neutral-500 font-medium pb-1.5">
                 Parabéns
@@ -81,10 +85,10 @@ export const SuccessDialog = ({
               <Link
                 target="_blank"
                 href={createLink({
-                  href: "opensea.io",
-                  path: user.walletAddress,
+                  href: "rarible.com",
+                  path: `user/${user.walletAddress}/owned`,
                   prodSubdomain: "",
-                  testSubdomain: "testnets.",
+                  testSubdomain: "testnet.",
                 })}
               >
                 Ver meu perfil

@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -12,7 +12,6 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { createLink } from "@/helpers";
 import { LoggedInUser } from "@lumx-protocol/embedded-wallet";
-import { cookies } from "next/headers";
 
 export const UserNav = ({
   name,
@@ -32,7 +31,6 @@ export const UserNav = ({
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/avatars/01.png" alt={name} />
             <AvatarFallback className="bg-[#6E05FF] dark:bg-[#6E05FF] text-white">
               {getInitialLetters(name)}
             </AvatarFallback>
@@ -45,10 +43,10 @@ export const UserNav = ({
             <Link
               className="flex items-center justify-between w-full"
               href={createLink({
-                href: "opensea.io",
-                path: walletAddress,
+                href: "rarible.com",
+                path: `user/${walletAddress}/owned`,
                 prodSubdomain: "",
-                testSubdomain: "testnets.",
+                testSubdomain: "testnet.",
               })}
               target="_blank"
             >
