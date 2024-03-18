@@ -7,9 +7,12 @@ import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import { Spinner } from "./ui/spinner";
 import {
+  LoggedInUser,
   isModalVisible,
   updateModalVisibility,
 } from "@lumx-protocol/embedded-wallet";
+import { cn } from "@/lib/utils";
+import { isSafari } from "@/helpers";
 
 const transactionHash = "";
 
@@ -36,13 +39,13 @@ const SubmitButtonForm = () => {
 };
 
 export const ClaimForm = ({
-  walletId,
+  user,
   setHash,
 }: {
-  walletId: string;
+  user: LoggedInUser;
   setHash: (hash: string) => void;
 }) => {
-  const mintWithWalletId = mint.bind(null, walletId);
+  const mintWithWalletId = mint.bind(null, user.walletId);
   const [hash, formAction] = useFormState(mintWithWalletId, transactionHash);
 
   useEffect(() => {
@@ -52,16 +55,20 @@ export const ClaimForm = ({
   }, [hash]);
 
   return (
-    <form action={formAction} className="flex gap-4 pt-4">
+    <form
+      action={formAction}
+      className={cn("flex gap-4 pt-4", { "pb-2": isSafari() })}
+    >
       <Input
         id="quantity"
         type="number"
         defaultValue={1}
+        max={5}
         name="quantity"
         className="sm:w-[111px] w-full text-center"
         required
       />
-      {localStorage.getItem("wallet.user") ? (
+      {user.walletId ? (
         <SubmitButtonForm />
       ) : (
         <Button

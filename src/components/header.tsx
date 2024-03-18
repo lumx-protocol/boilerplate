@@ -32,7 +32,16 @@ export const Header = (props: HeaderProps) => {
       </header>
       {isMobile ? (
         Object.keys(props).length ? (
-          <MobileNav {...props} />
+          <div className="flex">
+            <Image
+              src="./lumx-logo.svg"
+              height={39}
+              width={39}
+              alt="lumx logo"
+              className="mt-8 ml-[calc(5vw)]"
+            />
+            <MobileNav {...props} />
+          </div>
         ) : (
           <div className="flex sm:hidden w-fit mt-8 ml-[calc(5vw)]">
             <Wallet />
