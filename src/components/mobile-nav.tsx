@@ -57,6 +57,7 @@ export function MobileNav({
             {name ? (
               <>
                 <MobileLink
+                  target="_blank"
                   href={createLink({
                     href: "rarible.com",
                     path: `user/${walletAddress}/owned`,
@@ -90,6 +91,7 @@ interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
   className?: string;
+  target?: string;
 }
 
 function MobileLink({
@@ -97,6 +99,7 @@ function MobileLink({
   onOpenChange,
   className,
   children,
+  target = "_self",
   ...props
 }: MobileLinkProps) {
   const router = useRouter();
@@ -104,10 +107,11 @@ function MobileLink({
     <Link
       href={href}
       onClick={() => {
+        if (target === "_blank") return;
         router.push(href.toString());
         onOpenChange?.(false);
       }}
-      target={href.toString().includes("rarible") ? "_blank" : "_self"}
+      target={target}
       className={cn(className, "text-sm")}
       {...props}
     >

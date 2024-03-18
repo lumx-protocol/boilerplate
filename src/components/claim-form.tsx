@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { mint } from "@/app/actions";
+import { startTransaction } from "@/app/actions";
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Spinner } from "./ui/spinner";
 import {
   LoggedInUser,
@@ -13,8 +13,14 @@ import {
 } from "@lumx-protocol/embedded-wallet";
 import { cn } from "@/lib/utils";
 import { isSafari } from "@/helpers";
+import { useToast } from "./ui/use-toast";
 
-const transactionHash = "";
+const initialTransactionState = {
+  status: "",
+  message: "",
+  transactionHash: "",
+  id: "",
+};
 
 const SubmitButtonForm = () => {
   const { pending } = useFormStatus();
@@ -45,14 +51,27 @@ export const ClaimForm = ({
   user: LoggedInUser;
   setHash: (hash: string) => void;
 }) => {
-  const mintWithWalletId = mint.bind(null, user.walletId);
-  const [hash, formAction] = useFormState(mintWithWalletId, transactionHash);
+  const mintWithWalletId = startTransaction.bind(null, user.walletId);
+  const [transaction, formAction] = useFormState(
+    mintWithWalletId,
+    initialTransactionState
+  );
+  const { toast } = useToast();
 
+  //TODO: better way of handling toast without useEffect
   useEffect(() => {
-    if (hash.includes("0x")) {
-      setHash(hash);
+    if (transaction.status === "success") {
+      setHash(transaction.transactionHash);
+      return;
     }
-  }, [hash]);
+
+    if (transaction.status === "error")
+      toast({
+        title: "Erro",
+        description: transaction.message,
+        variant: "destructive",
+      });
+  }, [transaction.id]);
 
   return (
     <form
