@@ -42,4 +42,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to the wor
 
 ## Questions
 
-To learn more about the boilerplate project, you can go to our (Documentation)[https://docs.lumx.io/get-started/introduction] or if you have any doubts feel free to reach us on our (Discord)[https://discord.gg/sSGvyywSKS]
+To learn more about the boilerplate project, you can go to our [Documentation](https://docs.lumx.io/get-started/introduction) or if you have any doubts feel free to reach us on our [Discord](https://discord.gg/sSGvyywSKS)
