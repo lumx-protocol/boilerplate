@@ -62,15 +62,12 @@ export const Content = ({
           }}
           lang="pt"
           colorScheme="black"
-          environment={
-            process.env
-              .NEXT_PUBLIC_LUMX_ENV as WalletContextProviderProps["environment"]
-          }
+          environment={process.env.NEXT_PUBLIC_LUMX_ENV}
           onFinishAuth={(user) => {
             setUser(user);
             document.cookie = `walletId=${user.walletId}`;
           }}
-          theme={theme as WalletContextProviderProps["theme"]}
+          theme={theme}
         >
           <div className="min-h-screen relative flex flex-col justify-between">
             <ModeToggle className="absolute sm:hidden sm:top-2 sm:right-2 top-8 right-[calc(5vw)]" />

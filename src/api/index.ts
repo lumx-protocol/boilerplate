@@ -2,10 +2,17 @@ import { Item, Contract } from "@/types";
 import axios from "axios";
 import config from "../../lumx.json";
 
+const environmentURLs = {
+  sandbox: "https://protocol-sandbox.lumx.io/v1/",
+  production: "https://protocol.lumx.io/v1/",
+  staging: "https://protocol-staging.lumx.io/v1/",
+};
+
 export const getBaseApiUrl = () =>
-  process.env.NEXT_PUBLIC_LUMX_ENV === "sandbox"
-    ? "https://protocol-sandbox.lumx.io/v1/"
-    : "https://protocol.lumx.io/v1/";
+  environmentURLs[
+    (process.env.NEXT_PUBLIC_ENVIRONMENT as keyof typeof environmentURLs) ||
+      "sandbox"
+  ];
 
 export const protocolInstance = axios.create({
   baseURL: getBaseApiUrl(),
