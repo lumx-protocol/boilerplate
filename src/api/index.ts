@@ -1,6 +1,7 @@
 import { Item, Contract } from "@/types";
 import axios from "axios";
 import config from "../../lumx.json";
+import { typedFetch } from "./typed-fetch";
 
 const environmentURLs = {
   sandbox: "https://protocol-sandbox.lumx.io/v1/",
@@ -18,22 +19,36 @@ export const protocolInstance = axios.create({
   baseURL: getBaseApiUrl(),
 });
 
-protocolInstance.defaults.headers.common[
-  "Authorization"
-] = `Bearer ${process.env.LUMX_API_KEY}`;
-
 export const getItemType = async () => {
-  const response = await protocolInstance.get<Item>(
-    `/contracts/${config.contractId}/item-types/${config.itemTypeId}`
-  );
-
-  return response.data;
+  try {
+    return typedFetch<Item>(
+      `${getBaseApiUrl()}/contracts/${config.contractId}/item-types/${
+        config.itemTypeId
+      }`,
+      {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
+        },
+      }
+    );
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const getContract = async () => {
-  const response = await protocolInstance.get<Contract>(
-    `/contracts/${config.contractId}`
-  );
-
-  return response.data;
+  try {
+    return typedFetch<Contract>(
+      `${getBaseApiUrl()}/contracts/${config.contractId}`,
+      {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${process.env.LUMX_API_KEY}`,
+        },
+      }
+    );
+  } catch (err) {
+    console.error(err);
+  }
 };
