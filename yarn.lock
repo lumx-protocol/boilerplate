@@ -151,10 +151,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@lumx-protocol/embedded-wallet@^0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@lumx-protocol/embedded-wallet/-/embedded-wallet-0.0.21.tgz#6397b091903733d57477dc009f5abc761cffe6d1"
-  integrity sha512-kP3V+qM/8FSyqUqks3AqEDbxQcECJbO4tB32IL/yFxUB/z4q2k6i8OGZFK4yjsU97tOm8cau/Y74oC+c2PeoSQ==
+"@lumx-protocol/embedded-wallet@^0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@lumx-protocol/embedded-wallet/-/embedded-wallet-0.0.23.tgz#3040b2787b2e52e219ee541648e1a0c605bf962a"
+  integrity sha512-x6t7xjGOP+mDVTLsnfhkpRBr/j8FsqCCaJf6TByXCpomTLqDWgqTpAW0AUdMx/kgoH72kHchC2njABJPu3RrMw==
   dependencies:
     "@formkit/auto-animate" "^0.8.1"
     "@hookform/resolvers" "^3.3.2"
