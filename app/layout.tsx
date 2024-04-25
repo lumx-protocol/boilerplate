@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import config from "../../lumx.json";
+import config from "../lumx.json";
 import { ThemeProvider } from "@/components/theme-provider";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster";

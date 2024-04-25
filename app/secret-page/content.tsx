@@ -1,28 +1,16 @@
 "use client";
 
 import { Header } from "@/components/header";
-import { ItemInfo } from "@/components/item";
-import { SuccessDialog } from "@/components/success-dialog";
-import { Contract, Item } from "@/types";
 import {
   LoggedInUser,
-  Wallet,
   WalletContextProvider,
-  WalletContextProviderProps,
 } from "@lumx-protocol/embedded-wallet";
 import { useEffect, useState } from "react";
 import config from "../../lumx.json";
 import { Footer } from "@/components/footer";
 import { ModeToggle } from "@/components/toggle";
-import { useTheme } from "next-themes";
 
-export const Content = ({
-  item,
-  contract,
-}: {
-  item: Item;
-  contract: Contract;
-}) => {
+const Content = () => {
   const [user, setUser] = useState<LoggedInUser>({
     name: "",
     walletId: "",
@@ -32,15 +20,12 @@ export const Content = ({
     phone: "",
     birthDate: "",
   });
+
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  const [hash, setHash] = useState("");
-  const props = { item, contract, user, setHash };
-  const { theme } = useTheme();
 
   useEffect(() => {
     document.cookie = `walletId=${user.walletId}`;
@@ -48,34 +33,34 @@ export const Content = ({
       setUser(JSON.parse(window.localStorage.getItem("wallet.user") || "{}"));
   }, [user.walletId]);
 
-  const successDialogProps = { item, hash, user, setHash };
-
   return (
     <>
       {isClient && (
         <WalletContextProvider
           clientId={config.clientId}
           isModal
-          modalButton={{
-            cta: "Conecte sua carteira",
-            size: "small",
-          }}
-          lang="pt"
-          colorScheme="black"
-          environment={process.env.NEXT_PUBLIC_LUMX_ENV}
+          environment={
+            process.env.NEXT_PUBLIC_LUMX_ENV as "sandbox" | "production"
+          }
           onFinishAuth={(user) => {
             setUser(user);
-            document.cookie = `walletId=${user.walletId}`;
           }}
-          theme={theme}
+          theme="system"
         >
-          <div className="min-h-screen relative flex flex-col justify-between">
+          <div className="min-h-screen flex flex-col justify-between">
             <ModeToggle className="absolute sm:hidden sm:top-2 sm:right-2 top-8 right-[calc(5vw)]" />
             <Header {...user} />
-            {hash && <SuccessDialog {...successDialogProps} />}
-            <main className="sm:pb-24 pb-0 sm:px-[calc(15vw)] px-[calc(5vw)]">
-              <ItemInfo {...props} />
-            </main>
+            <div className="flex flex-col h-full mx-auto sm:px-[calc(15vw)] px-[calc(5vw)]">
+              <h4 className="text-sm leading-[14px] text-neutral-500 font-medium pb-1.5">
+                WOW
+              </h4>
+              <h1 className="font-semibold text-3xl tracking-[-0.75%] pb-1.5">
+                Você tem o que é necessário para estar aqui
+              </h1>
+              <h2 className="font-normal text-sm leading-[14px] text-neutral-500 pb-4">
+                Insira algo muito secreto nessa página 🚀
+              </h2>
+            </div>
             <Footer />
           </div>
         </WalletContextProvider>
@@ -83,3 +68,5 @@ export const Content = ({
     </>
   );
 };
+
+export default Content;
