@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
   const items = await getUser();
 
   const hasAccess = items?.tokens["polygon"].find(
-    (i) => i.itemTypeId === lumxConfig.itemTypeId
+    (i) => i.itemTypeId === process.env.NEXT_PUBLIC_ITEM_TYPE_ID
   );
 
   if (!hasAccess) {
