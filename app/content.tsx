@@ -54,7 +54,7 @@ export const Content = ({
     <>
       {isClient && (
         <WalletContextProvider
-          clientId={config.clientId}
+          clientId={process.env.NEXT_PUBLIC_CLIENT_ID as string}
           isModal
           modalButton={{
             cta: "Conecte sua carteira",

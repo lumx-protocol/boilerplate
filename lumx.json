@@ -2,9 +2,6 @@
   "addons": [
     "tokengating"
   ],
-  "clientId": "2224becc-74c2-414d-9d62-bdd4ec0ac43b",
-  "contractId": "f6d62961-8abb-4e86-a93b-d54c2b83b2bb",
-  "itemTypeId": "b1f03507-7e62-4ce2-b8cf-5e6a434c18e5",
   "pageTitle": "Lumx Dapp",
   "pageDescription": "Welcome to Lumx Dapp"
 }

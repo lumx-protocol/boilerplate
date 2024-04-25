@@ -37,7 +37,7 @@ const Content = () => {
     <>
       {isClient && (
         <WalletContextProvider
-          clientId={config.clientId}
+          clientId={process.env.NEXT_PUBLIC_CLIENT_ID as string}
           isModal
           environment={
             process.env.NEXT_PUBLIC_LUMX_ENV as "sandbox" | "production"

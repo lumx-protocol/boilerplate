@@ -16,7 +16,12 @@ export const startTransaction = async (
   prevState: any,
   formData: FormData
 ): Promise<Transaction> => {
-  console.log("minting", walletId, formData, config.itemTypeId);
+  console.log(
+    "minting",
+    walletId,
+    formData,
+    process.env.NEXT_PUBLIC_ITEM_TYPE_ID
+  );
 
   const transaction = await typedFetch<Transaction>(
     `${getBaseApiUrl()}/transactions/mints`,
@@ -25,7 +30,7 @@ export const startTransaction = async (
       body: JSON.stringify({
         amount: Number(formData.get("quantity")),
         walletId,
-        itemTypeId: config.itemTypeId,
+        itemTypeId: process.env.NEXT_PUBLIC_ITEM_TYPE_ID,
       }),
       headers: {
         "Content-type": "application/json",

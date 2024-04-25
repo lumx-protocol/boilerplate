@@ -17,9 +17,9 @@ export const getBaseApiUrl = () =>
 export const getItemType = async () => {
   try {
     return typedFetch<Item>(
-      `${getBaseApiUrl()}/contracts/${config.contractId}/item-types/${
-        config.itemTypeId
-      }`,
+      `${getBaseApiUrl()}/contracts/${
+        process.env.NEXT_PUBLIC_CONTRACT_ID
+      }/item-types/${process.env.NEXT_PUBLIC_ITEM_TYPE_ID}`,
       {
         headers: {
           "Content-type": "application/json",
@@ -35,7 +35,7 @@ export const getItemType = async () => {
 export const getContract = async () => {
   try {
     return typedFetch<Contract>(
-      `${getBaseApiUrl()}/contracts/${config.contractId}`,
+      `${getBaseApiUrl()}/contracts/${process.env.NEXT_PUBLIC_CONTRACT_ID}`,
       {
         headers: {
           "Content-type": "application/json",
