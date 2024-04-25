@@ -2,8 +2,8 @@ import { WalletItems } from "@/types";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getBaseApiUrl } from "./api";
-import lumxConfig from "../lumx.json";
+import lumxConfig from "./lumx.json";
+import { getBaseApiUrl } from "@/api";
 
 // This function can be marked `async` if using `await` inside
 //No support for axios on middleware..
