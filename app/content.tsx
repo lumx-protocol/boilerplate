@@ -61,7 +61,7 @@ export const Content = ({
             size: "small",
           }}
           lang="pt"
-          colorScheme="black"
+          colorScheme={theme === "dark" ? "purple" : "purple"}
           environment={process.env.NEXT_PUBLIC_LUMX_ENV}
           onFinishAuth={(user) => {
             setUser(user);
