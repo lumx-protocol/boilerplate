@@ -151,10 +151,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@lumx-protocol/embedded-wallet@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@lumx-protocol/embedded-wallet/-/embedded-wallet-0.0.23.tgz#3040b2787b2e52e219ee541648e1a0c605bf962a"
-  integrity sha512-x6t7xjGOP+mDVTLsnfhkpRBr/j8FsqCCaJf6TByXCpomTLqDWgqTpAW0AUdMx/kgoH72kHchC2njABJPu3RrMw==
+"@lumx-protocol/embedded-wallet@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@lumx-protocol/embedded-wallet/-/embedded-wallet-0.0.25.tgz#e7f2b0c004fd7ca51b94b3968aa037825a22ba28"
+  integrity sha512-2BlxYXLNttnkVbCbM4t8XdhctGxpvrpbmhIy7tNNnzu+oXvKwUw4QWtv37/qEY65p/5sS6m7x6YwpOyjh5lAbQ==
   dependencies:
     "@formkit/auto-animate" "^0.8.1"
     "@hookform/resolvers" "^3.3.2"
@@ -171,13 +171,12 @@
     "@radix-ui/react-switch" "^1.0.3"
     "@radix-ui/react-toast" "^1.1.5"
     "@radix-ui/react-tooltip" "^1.0.7"
-    "@react-oauth/google" "^0.12.1"
     "@tanstack/react-query" "^5.8.7"
     class-variance-authority "^0.7.0"
     clsx "^2.0.0"
     i18next "^23.10.1"
     ky "^1.2.3"
-    lucide-react "^0.292.0"
+    lucide-react "^0.365.0"
     react "^18.2.0"
     react-auth-code-input "^3.2.1"
     react-dom "^18.2.0"
@@ -740,11 +739,6 @@
   integrity sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
-
-"@react-oauth/google@^0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.12.1.tgz#b76432c3a525e9afe076f787d2ded003fcc1bee9"
-  integrity sha512-qagsy22t+7UdkYAiT5ZhfM4StXi9PPNvw0zuwNmabrWyMKddczMtBIOARflbaIj+wHiQjnMAsZmzsUYuXeyoSg==
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.10.2"
@@ -2399,10 +2393,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lucide-react@^0.292.0:
-  version "0.292.0"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.292.0.tgz#c8a06b2ccd8a348a88669def3c0291c035de2884"
-  integrity sha512-rRgUkpEHWpa5VCT66YscInCQmQuPCB1RFRzkkxMxg4b+jaL0V12E3riWWR2Sh5OIiUhCwGW/ZExuEO4Az32E6Q==
+lucide-react@^0.365.0:
+  version "0.365.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.365.0.tgz#aa15b62e004bf35d557451f4b3aed2f6da5e2d84"
+  integrity sha512-sJYpPyyzGHI4B3pys+XSFnE4qtSWc68rFnDLxbNNKjkLST5XSx9DNn5+1Z3eFgFiw39PphNRiVBSVb+AL3oKwA==
 
 lucide-react@^0.372.0:
   version "0.372.0"
